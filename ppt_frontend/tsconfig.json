@@ -1,0 +1,21 @@
+{
+  "files": [],
+  "references": [
+      {
+        "path": "./tsconfig.app.json"
+      },
+      {
+        "path": "./tsconfig.spec.json"
+      }
+  ],
+  "compilerOptions": {
+    "strict": false,
+    "allowJs": true,
+    "target": "ES2022",
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+  }
+}

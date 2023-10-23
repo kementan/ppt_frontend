@@ -1,0 +1,5 @@
+<label for="exampleFormControlSelect9">Profesi</label>
+<select class="form-control digits gf_border" (change)="onRoleSelected($event.target.value)">
+    <option value="">- Pilih -</option>
+    <option *ngFor="let item of data" [value]="item.id">{{ item.name }}</option>
+</select>

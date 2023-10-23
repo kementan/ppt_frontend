@@ -1,0 +1,8 @@
+<div class="form-group m-t-15 ms-1">
+    <label for="exampleFormControlSelect9">Sub Sektor</label>
+    <div *ngFor="let item of data" class="form-check checkbox checkbox-primary mb-0">
+        <input class="form-check-input" [id]="'checkbox-' + item.id" type="checkbox" 
+               [value]="item.id" [(ngModel)]="item.selected" (change)="toggleCommodity(item.id)" name="sub-sector">
+        <label class="form-check-label" [for]="'checkbox-' + item.id">{{ item.name }}</label>
+    </div>
+</div>

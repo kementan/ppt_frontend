@@ -1,0 +1,130 @@
+<div class="container-fluid base-inputs">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+              <h5>{{ sec1_title }}</h5>
+          </div>
+          <form class="form theme-form">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3 row">
+                    <label class="col-lg-3 col-form-label">Gambar Layanan</label>
+                    <div class="col-lg-9">
+                      <input 
+                        class="form-control"
+                        type="file"
+                        accept="image/jpeg, image/png"
+                        (change)="onFileSelected($event)"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3 row">
+                    <label *ngIf="imageName" class="col-lg-3 col-form-label">Image Name: {{ ImageName }}</label>
+                    <img *ngIf="previewImage" [src]="previewImage" alt="{{ ImageName }}" (click)="confirmImageRemoval()">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="mb-3 row">
+                    <button (click)="uploadImage()" class="btn btn-primary btn-max" type="submit">Upload</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3 row mb-0">
+                    <label class="col-lg-3 col-form-label">Nama Layanan</label>
+                    <div class="col-lg-9">
+                      <input class="form-control" type="text" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3 row mb-0">
+                    <label class="col-lg-3 col-form-label">Ada Sub Layanan</label>
+                    <div class="col-lg-9">
+                      <select class="form-select form-control">
+                        <option value="1">Ada</option>
+                        <option value="0">Tidak</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+  
+          <div class="card-header">
+            <h5>{{ sec2_title }}</h5>
+          </div>
+          <form class="form theme-form">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-3">
+                    <select class="form-control digits gf_border" id="exampleFormControlSelect9">
+                      <option>Method</option>
+                      <option>GET</option>
+                      <option>POST</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="mb-3">
+                    <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="API Endpoint, example: https://api.website.com/show-data?params=1" />
+                  </div>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+  
+        <div class="card">
+          <div class="card-header">
+            <h5>{{ sec3_title }}</h5>
+          </div>
+          <form class="form theme-form">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3 row">
+                    <label class="col-lg-3 col-form-label"> Maximum Length </label>
+                    <div class="col-lg-9">
+                      <input class="form-control" type="text" placeholder="Content must be in 6 characters" maxlength="6" />
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-lg-3 col-form-label pt-0">Static Text</label>
+                    <div class="col-lg-9">
+                      <div class="form-control-static">Hello !... This is static text</div>
+                    </div>
+                  </div>
+                  <div class="mb-3 row mb-0">
+                    <label class="col-lg-3 col-form-label">Textarea</label>
+                    <div class="col-lg-9">
+                      <textarea class="form-control" rows="5" cols="5" placeholder="Default textarea"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-end">
+              <div class="col-lg-9 offset-sm-3">
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <input class="btn btn-light ms-1" type="reset" value="Cancel" />
+              </div>
+            </div>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+    

@@ -1,0 +1,171 @@
+<div class="col-lg-12 mb-3" style="padding:10px; background-color: rgb(236, 244, 244);">
+    <div class="ribbon-wrapper-right card">
+        <div class="card-body">
+            <div class="ribbon ribbon-bookmark ribbon-{{ labelBadge }} fw-bold">{{ activeLabel }}</div>
+            <button class="ribbon ribbon-clip-right ribbon-right ribbon-primary rounded" (click)="doSave()">Simpan</button>
+            <button class="ribbon ribbon-clip-bottom-right ribbon-danger rounded" (click)="doCancel()">Batal</button>
+            <form style="margin-bottom: 10px;" class="form theme-form" [formGroup]="userForm">
+                <div class="row">
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <app-select-role [listType]="selectMode" [selectedLabelName]="userForm.get('role_name').value" (roleSelected)="userForm.get('role_id').setValue($event)"></app-select-role>
+                        <div *ngIf="userForm.get('role_id').invalid && userForm.get('role_id').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('role_id')) }}
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label for="exampleFormControlInput1">Nama Lengkap</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="text"
+                          placeholder="Sesuai KTP" 
+                          name="name"
+                          formControlName="name"
+                        />
+                        <div *ngIf="userForm.get('name').invalid && userForm.get('name').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('name')) }}
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label for="exampleFormControlInput1">Username</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="text"
+                          placeholder="" 
+                          name="username"
+                          formControlName="username"
+                        />
+                        <div *ngIf="userForm.get('username').invalid && userForm.get('username').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('username')) }}
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                      <label for="exampleFormControlInput1">Email</label>
+                      <input 
+                        class="form-control gf_border" 
+                        type="email"
+                        placeholder="" 
+                        name="email"
+                        formControlName="email"
+                      />
+                      <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched" class="text-danger">
+                        {{ getErrorMsg(bioForm.get('email')) }}
+                      </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label for="exampleFormControlInput1">NIK</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="text"
+                          placeholder="" 
+                          name="nik"
+                          formControlName="nik"
+                        />
+                        <div *ngIf="userForm.get('nik').invalid && userForm.get('nik').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('nik')) }}
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                      <label for="exampleFormControlInput1">Password</label>
+                      <input 
+                        class="form-control gf_border" 
+                        type="password"
+                        placeholder="" 
+                        name="password"
+                        formControlName="password"
+                      />
+                      <div *ngIf="userForm.get('password').invalid && userForm.get('password').touched" class="text-danger">
+                        {{ getErrorMsg(bioForm.get('password')) }}
+                      </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-4">
+                      <label class="form-label">Active</label>
+                      <div class="input-group">
+                        <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                          <div class="form-check form-check-inline radio radio-primary">
+                            <input 
+                              class="form-check-input" 
+                              id="radioinline1" 
+                              type="radio" 
+                              name="is_active" 
+                              formControlName="is_active" 
+                              [value]="true"
+                            />
+                            <label class="form-check-label mb-0" for="radioinline1">Ya</label>
+                          </div>
+                          <div class="form-check form-check-inline radio radio-primary">
+                            <input 
+                              class="form-check-input" 
+                              id="radioinline2" 
+                              type="radio" 
+                              name="is_active" 
+                              formControlName="is_active"
+                              [value]="false"
+                            />
+                            <label class="form-check-label mb-0" for="radioinline2">Tidak</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-4">
+                      <label class="form-label">Lengkap</label>
+                      <div class="input-group">
+                        <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                          <div class="form-check form-check-inline radio radio-primary">
+                            <input 
+                              class="form-check-input" 
+                              id="radioinline5" 
+                              type="radio" 
+                              name="is_complete" 
+                              formControlName="is_complete" 
+                              [value]="true"
+                            />
+                            <label class="form-check-label mb-0" for="radioinline5">Ya</label>
+                          </div>
+                          <div class="form-check form-check-inline radio radio-primary">
+                            <input 
+                              class="form-check-input" 
+                              id="radioinline6" 
+                              type="radio" 
+                              name="is_complete" 
+                              formControlName="is_complete"
+                              [value]="false"
+                            />
+                            <label class="form-check-label mb-0" for="radioinline6">Tidak</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-4">
+                      <label class="form-label">Verified</label>
+                      <div class="input-group">
+                        <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                          <div class="form-check form-check-inline radio radio-primary">
+                            <input 
+                              class="form-check-input" 
+                              id="radioinline3" 
+                              type="radio" 
+                              name="is_verified" 
+                              formControlName="is_verified" 
+                              [value]="true"
+                            />
+                            <label class="form-check-label mb-0" for="radioinline3">Ya</label>
+                          </div>
+                          <div class="form-check form-check-inline radio radio-primary">
+                            <input 
+                              class="form-check-input" 
+                              id="radioinline4" 
+                              type="radio" 
+                              name="is_verified" 
+                              formControlName="is_verified"
+                              [value]="false"
+                            />
+                            <label class="form-check-label mb-0" for="radioinline4">Tidak</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+          </form>
+        </div>
+    </div>
+</div>

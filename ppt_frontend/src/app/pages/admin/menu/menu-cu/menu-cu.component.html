@@ -1,0 +1,86 @@
+<div class="col-lg-12 mb-3" style="padding:10px; background-color: rgb(236, 244, 244);">
+    <div class="ribbon-wrapper-right card">
+        <div class="card-body">
+            <div class="ribbon ribbon-bookmark ribbon-{{ labelBadge }} fw-bold">{{ activeLabel }}</div>
+            <button class="ribbon ribbon-clip-right ribbon-right ribbon-primary rounded" (click)="doSave()">Simpan</button>
+            <button class="ribbon ribbon-clip-bottom-right ribbon-danger rounded" (click)="doCancel()">Batal</button>
+            <form style="margin-bottom: 10px;">
+                <div class="row">
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label class="form-label">Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
+                            <input 
+                                class="form-control bg-light-primary" 
+                                type="text"
+                                required=""
+                                name="name"
+                                [(ngModel)]="form.name"
+                                #name="ngModel"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label class="form-label">Slug</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
+                            <input 
+                                class="form-control bg-light-primary" 
+                                type="text"
+                                required=""
+                                name="slug"
+                                [(ngModel)]="form.slug"
+                                #slug="ngModel"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label class="form-label">Sort</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
+                            <input 
+                                class="form-control bg-light-primary" 
+                                type="number"
+                                required=""
+                                name="sort"
+                                [(ngModel)]="form.sort"
+                                #sort="ngModel"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label class="form-label">Status</label>
+                        <div class="input-group">
+                            <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline1" 
+                                        type="radio" 
+                                        name="is_active" 
+                                        [(ngModel)]="form.is_active" 
+                                        [value]="true"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline1">Active</label>
+                                </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline2" 
+                                        type="radio" 
+                                        name="is_active" 
+                                        [(ngModel)]="form.is_active" 
+                                        [value]="false"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline2">Inactive</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </form>
+        </div>
+    </div>
+</div>

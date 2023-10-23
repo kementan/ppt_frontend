@@ -1,0 +1,41 @@
+<div class="col-lg-12 mb-3" style="padding:10px; background-color: rgb(236, 244, 244);">
+    <div class="ribbon-wrapper-right card">
+        <div class="card-body">
+            <div class="ribbon ribbon-bookmark ribbon-success fw-bold">{{ activeLabel }}</div>
+            <button class="ribbon ribbon-clip-right ribbon-right ribbon-primary rounded" (click)="doSave()">Simpan</button>
+            <button class="ribbon ribbon-clip-bottom-right ribbon-danger rounded" (click)="doCancel()">Batal</button>
+            <form style="margin-bottom: 10px;">
+                <div class="row">
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label class="form-label">Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
+                            <input 
+                                class="form-control bg-light-primary" 
+                                type="text"
+                                required=""
+                                name="name"
+                                [(ngModel)]="form.name"
+                                #name="ngModel"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-6">
+                        <label class="form-label">Value</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
+                            <input 
+                                class="form-control bg-light-primary" 
+                                type="text"
+                                required=""
+                                name="value"
+                                [(ngModel)]="form.value"
+                                #value="ngModel"
+                            />
+                        </div>
+                    </div>
+                </div>
+          </form>
+        </div>
+    </div>
+</div>

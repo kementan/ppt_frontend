@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-lg-3">
+        <div class="mb-3">
+            <label for="exampleFormControlSelect9">Provinsi</label>
+            <select class="form-control digits gf_border" (change)="onRegionSelected('prov', '2', $event.target.value)">
+                <option [value]="">- Pilih -</option>
+                <option *ngFor="let item of provinsiData" [value]="item.kode">{{ item.nama }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="mb-3">
+            <label for="exampleFormControlSelect9">Kabupaten</label>
+            <select class="form-control digits gf_border" (change)="onRegionSelected('kab', '3', $event.target.value)">
+                <option [value]="">- Pilih -</option>
+                <option *ngFor="let item of kabupatenData" [value]="item.kode">{{ item.nama }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="mb-3">
+            <label for="exampleFormControlSelect9">Kecamatan</label>
+            <select class="form-control digits gf_border" (change)="onRegionSelected('kec', '4', $event.target.value)">
+                <option [value]="">- Pilih -</option>
+                <option *ngFor="let item of kecamatanData" [value]="item.kode">{{ item.nama }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="mb-3">
+            <label for="exampleFormControlSelect9">Desa</label>
+            <select class="form-control digits gf_border" (change)="onRegionSelected('des', '5', $event.target.value)">
+                <option [value]="">- Pilih -</option>
+                <option *ngFor="let item of desaData" [value]="item.kode">{{ item.nama }}</option>
+            </select>
+        </div>
+    </div>
+</div>

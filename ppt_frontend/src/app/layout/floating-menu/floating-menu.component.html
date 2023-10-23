@@ -1,0 +1,54 @@
+<div class="gf-floating-menu">
+  <div class="float-radius row col-12">
+    <div class="float-hover col">
+      <a [routerLink]="'/dashboard'">
+        <div class="widget-content">
+          <div class="text-center flow">
+            <img width="40" src="assets/images/floating/home.png" alt="" class="img-fluid for-light gf-mh-40">
+            <p class="gf-mb-0">Home</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div *ngIf="isLoggedIn" class="float-hover col">
+      <a [routerLink]="'/lahan'">
+        <div class="widget-content">
+          <div class="text-center flow">
+            <img width="30" src="assets/images/floating/land.png" alt="" class="img-fluid for-light gf-mh-40">
+            <p class="gf-mb-0">Lahan</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- <div class="float-hovers col shadow br-20 gf-active">
+      <a [routerLink]="'/chart'">
+        <div class="widget-content">
+          <div class="text-center flow">
+            <img width="30" src="assets/images/floating/report.png" alt="" class="img-fluid for-light gf-mh-40">
+            <p class="gf-mb-0">Lapor</p>
+          </div>
+        </div>
+      </a>
+    </div> -->
+    <div *ngIf="isLoggedIn && isComplete" class="float-hover col">
+      <a [routerLink]="'/profile'">
+        <div class="widget-content">
+          <div class="text-center flow">
+            <img width="30" src="assets/images/floating/profile.png" alt="" class="img-fluid for-light gf-mh-40">
+            <p class="gf-mb-0">Profil</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- <div class="float-hover col">
+      <a href="https://wa.me/{{ phoneHD }}" target="_blank">
+        <div class="widget-content">
+          <div class="text-center flow">
+            <img width="30" src="assets/images/floating/wa.png" alt="" class="img-fluid for-light gf-mh-40">
+            <p class="gf-mb-0">Bantuan</p>
+          </div>
+        </div>
+      </a>
+    </div> -->
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<ng-container *ngIf="isAdminAuthenticated">
+<div class="logo-wrapper">
+  <a routerLink="/dashboard">
+    <img class="img-fluid for-light" width="50" src="assets/images/logo/logo.png" alt="" />
+    <img class="img-fluid for-dark" width="50" src="assets/images/logo/logo_dark.png" alt="" />
+  </a>
+  <div class="back-btn" (click)="sidebarToggle()">
+    <i class="fa fa-angle-left"></i>
+  </div>
+  <div class="toggle-sidebar" (click)="sidebarToggle()">
+    <app-feather-icons [icon]="'grid'" class="status_toggle middle sidebar-toggle"></app-feather-icons>
+  </div>
+</div>
+<div class="logo-icon-wrapper">
+  <a href="javascript:void(0)">
+    <img class="img-fluid" width="50" src="assets/images/logo/logo-icon.png" alt="" />
+  </a>
+</div>
+<nav class="sidebar-main">
+  <div class="left-arrow" id="left-arrow" [class.d-none]="leftArrowNone" (click)="scrollToLeft()">
+    <app-feather-icons [icon]="'arrow-left'"></app-feather-icons>
+  </div>
+  <div id="sidebar-menu" [ngStyle]="{ marginLeft: this.layout.config.settings.layout == 'Rome' || 'Singapore' || 'Barcelona' ? margin + 'px' : '0px' }">
+    <ul class="sidebar-links custom-scrollbar">
+      <div class="simplebar-wrapper">
+        <div class="simplebar-mask">
+          <div class="simplebar-offset">
+            <div class="simplebar-content-wrapper">
+              <div class="simplebar-content">
+                <li class="back-btn">
+                  <a href="javascript:void(0)">
+                    <img class="img-fluid" width="50" src="assets/images/logo/logo-icon.png" alt="" />
+                  </a>
+                  <div class="mobile-back text-end" (click)="sidebarToggle()">
+                    <span>Back</span>
+                    <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
+                  </div>
+                </li>
+                  <li [class]="menuItem.headTitle1 ? 'sidebar-main-title' : 'sidebar-list'" *ngFor="let menuItem of menuItems" [ngClass]="{ active: menuItem.active }">
+                    <a href="javascript:void(0)" class="sidebar-link sidebar-title" [class.link-nav]="!menuItem.children" [ngClass]="{ active: menuItem.active }" *ngIf="menuItem.type === 'sub'">
+                      <span class="text-black"><i class="fa fa-file-text-o"></i> {{ menuItem.title }}</span>
+                    </a>
+                    <ul class="sidebar-submenu" [ngClass]="{ active: menuItem.active }" [ngClass]="{ 'menu-open': menuItem.active, 'menu-close': !menuItem.active }" *ngIf="menuItem.children" [style.display]="menuItem.active ? 'block' : 'none'">
+                      <li *ngFor="let childrenItem of menuItem.children" [ngClass]="{ active: childrenItem.active }">
+                        <a class="submenu-title" href="javascript:void(0)" *ngIf="childrenItem.type === 'sub'" (click)="toggletNavActive(childrenItem)">
+                          <span><i class="fa fa-file-text-o text-success"></i> {{ childrenItem.title }}</span>
+                          <div class="according-menu">
+                            <i class="fa fa-angle-{{ childrenItem.active ? 'down' : 'right' }} pull-right" *ngIf="childrenItem.children"></i>
+                          </div>
+                        </a>
+                        <ul class="nav-sub-childmenu submenu-content" *ngIf="childrenItem.children" [ngClass]="{ active: childrenItem.active }" [ngClass]="{ 'menu-open': childrenItem.active, 'menu-close': !childrenItem.active }" [style.display]="childrenItem.active ? 'block' : 'none'">
+                          <li *ngFor="let childrenSubItem of childrenItem.children" [ngClass]="{ active: childrenSubItem.active }">
+                            <a [routerLink]="!childrenSubItem.type ? null : [childrenSubItem.path]" *ngIf="childrenSubItem.type === 'link'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                              <i class="fa fa-edit text-success"></i> {{ childrenSubItem.title }}
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </div>
+  <div class="right-arrow" id="right-arrow" [class.d-none]="rightArrowNone" (click)="scrollToRight()">
+    <app-feather-icons [icon]="'arrow-right'"></app-feather-icons>
+  </div>
+</nav>
+</ng-container>
+  

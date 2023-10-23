@@ -1,0 +1,83 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12">
+      <div class="login-card">
+        <div>
+          <div class="login-main">
+            <div>
+              <a class="logo" routerLink="/">
+                <img class="img-fluid for-light gf_logo" src="assets/logo.png" alt="looginpage" />
+              </a>
+            </div>
+            <form
+              *ngIf="!isLoggedIn"
+              class="theme-form"
+              name="form"
+              (ngSubmit)="f.form.valid && onSubmit()"
+              #f="ngForm"
+              novalidate
+            >
+              <h4>Portal Pertanian Terintegrasi</h4>
+              <p>Input Username dan Password anda untuk login</p>
+              <div class="form-group">
+                <label class="col-form-label">Username/Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required=""
+                  name="username"
+                  [(ngModel)]="form.username"
+                  #username="ngModel"
+                />
+                <div *ngIf="username.errors && f.submitted" class="text text-danger mt-1">
+                  <div *ngIf="username.errors['required']">Username/Email tidak boleh kosong</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required=""
+                  [(ngModel)]="form.password"
+                  #password="ngModel"
+                  minlength="8"
+                />
+                <div *ngIf="password.errors && f.submitted" class="text text-danger mt-1">
+                  <div *ngIf="password.errors['required']">Password tidak boleh kosong</div>
+                  <div *ngIf="password.errors['minlength']">
+                    Password must be at least 6 characters
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div *ngIf="f.submitted && isLoginFailed" class="text text-danger mt-1">
+                  Gagal login: {{ errorMessage }}
+                </div>
+              </div>
+              <div class="form-group mb-0">
+                <div class="text-end mt-3 mb-2">
+                  <button class="btn gf_btn d-block w-100" type="submit" id="loginBtn"><span>Login</span></button>
+                </div>
+                <div>
+                  Lupa password?
+                  <a [routerLink]="'/auth/forgot-password'" class="ms-2 gf_text"><i>Reset Password</i></a>
+                </div>
+              </div>
+              <p class="gf_log_label mt-4">atau Login menggunakan :</p>
+              <div class="social">
+                <div class="btn-showcase gf_google_panel">
+                  <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>
+                </div>
+              </div>
+              <p class="mt-4 mb-0">
+                Belum punya akun?
+                <a [routerLink]="'/auth/register'" class="ms-2 gf_text">Daftar</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

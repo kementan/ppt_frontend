@@ -1,0 +1,111 @@
+<div class="card">
+    <div class="card-header card-no-border">
+      <div class="header-top">
+        <h6>Layanan Portal Pertanian</h6>
+      </div>
+    </div>
+    <div class="card-body pt-0">
+      <div class="row">
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a [routerLink]="'/dashboard/laporan-tanam'">
+            <div class="text-center">
+              <img width="50" src="assets/images/service/farmhouse.png" alt="" class="img-fluid for-light">
+              <p class="lh">Laporan Tanam</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a [routerLink]="'/dashboard/laporan-produktivitas'">
+            <div class="text-center">
+              <img width="50" src="assets/images/service/productivity.png" alt="" class="img-fluid for-light">
+              <p class="lh">Laporan Produktivitas</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a [routerLink]="'/dashboard/laporan-puso'">
+            <div class="text-center">
+              <img width="50" src="assets/images/service/plant.png" alt="" class="img-fluid for-light">
+              <p class="lh">Laporan Puso</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a [routerLink]="'/dashboard/laporan-panen'">
+            <div class="text-center">
+              <img width="50" src="assets/images/service/harvest.png" alt="" class="img-fluid for-light">
+              <p class="lh">Laporan Panen</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh">
+          <a [routerLink]="'/dashboard/persebaran-bpp'">
+            <div class="text-center">
+              <img width="50" src="assets/images/chart/bpp.png" alt="" class="img-fluid for-light">
+              <p class="lh">Peta Persebaran BPP</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh">
+          <a [routerLink]="'/dashboard/bdsp'">
+            <div class="text-center">
+              <img width="50" src="assets/images/chart/bdsp1.png" alt="" class="img-fluid for-light">
+              <p class="lh">BDSP</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh">
+          <a [routerLink]="'/dashboard/perbenihan'">
+            <div class="text-center">
+              <img width="50" src="assets/images/service/seeds.png" alt="" class="img-fluid for-light">
+              <p class="lh">Perbenihan</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a [routerLink]="'/dashboard/produksi-komoditas'">
+            <div class="text-center">
+              <img width="50" src="assets/images/floating/chart.png" alt="" class="img-fluid for-light">
+              <p class="lh">Produksi Komoditas</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a (click)="openPopupWindow('https://simluh.pertanian.go.id/guestreport', 1600, 900)">
+            <div class="text-center">
+              <img width="50" src="assets/images/service/penyuluh.png" alt="" class="img-fluid for-light">
+              <p class="lh">Informasi Penyuluh</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a [routerLink]="'/dashboard/ntp'">
+            <div class="text-center">
+              <img width="50" src="assets/images/chart/ntp.png" alt="" class="img-fluid for-light">
+              <p class="lh">NTP</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="card col-4 col-lg-2 sh" *ngIf="isAuthorized">
+          <a [routerLink]="'/dashboard/pdb'">
+            <div class="text-center">
+              <img width="50" src="assets/images/chart/bdsp2.png" alt="" class="img-fluid for-light">
+              <p class="lh">PDB</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>

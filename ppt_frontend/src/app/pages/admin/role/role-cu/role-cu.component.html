@@ -1,0 +1,172 @@
+<div class="col-lg-12 mb-3" style="padding:10px; background-color: rgb(236, 244, 244);">
+    <div class="ribbon-wrapper-right card">
+        <div class="card-body">
+            <div class="ribbon ribbon-bookmark ribbon-success fw-bold">{{ activeLabel }}</div>
+            <button class="ribbon ribbon-clip-right ribbon-right ribbon-primary rounded" (click)="doSave()">Simpan</button>
+            <button class="ribbon ribbon-clip-bottom-right ribbon-danger rounded" (click)="doCancel()">Batal</button>
+            <form style="margin-bottom: 10px;">
+                <div class="row">
+                    <div class="mb-3 m-form__group col-lg-12">
+                        <label class="form-label">Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
+                            <input 
+                                class="form-control bg-light-primary" 
+                                type="text"
+                                required=""
+                                name="name"
+                                [(ngModel)]="form.name"
+                                #name="ngModel"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-3">
+                        <label class="form-label">Create</label>
+                        <div class="input-group">
+                            <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline1" 
+                                        type="radio" 
+                                        name="is_create" 
+                                        [(ngModel)]="form.is_create" 
+                                        [value]="true"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline1">Y</label>
+                                </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline2" 
+                                        type="radio" 
+                                        name="is_create" 
+                                        [(ngModel)]="form.is_create" 
+                                        [value]="false"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline2">N</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-3">
+                        <label class="form-label">Read</label>
+                        <div class="input-group">
+                            <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline3" 
+                                        type="radio" 
+                                        name="is_read" 
+                                        [(ngModel)]="form.is_read" 
+                                        [value]="true"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline3">Y</label>
+                                </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline4" 
+                                        type="radio" 
+                                        name="is_read" 
+                                        [(ngModel)]="form.is_read" 
+                                        [value]="false"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline4">N</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-3">
+                        <label class="form-label">Update</label>
+                        <div class="input-group">
+                            <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline5" 
+                                        type="radio" 
+                                        name="is_update" 
+                                        [(ngModel)]="form.is_update" 
+                                        [value]="true"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline5">Y</label>
+                                </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline6" 
+                                        type="radio" 
+                                        name="is_update" 
+                                        [(ngModel)]="form.is_update" 
+                                        [value]="false"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline6">N</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-3">
+                        <label class="form-label">Delete</label>
+                        <div class="input-group">
+                            <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline7" 
+                                        type="radio" 
+                                        name="is_delete" 
+                                        [(ngModel)]="form.is_delete" 
+                                        [value]="true"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline7">Y</label>
+                                </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline8" 
+                                        type="radio" 
+                                        name="is_delete" 
+                                        [(ngModel)]="form.is_delete" 
+                                        [value]="false"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline8">N</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 m-form__group col-lg-3">
+                        <label class="form-label">Public</label>
+                        <div class="input-group">
+                            <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline9" 
+                                        type="radio" 
+                                        name="is_public" 
+                                        [(ngModel)]="form.is_public" 
+                                        [value]="true"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline9">Y</label>
+                                </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input 
+                                        class="form-check-input" 
+                                        id="radioinline10" 
+                                        type="radio" 
+                                        name="is_public" 
+                                        [(ngModel)]="form.is_public" 
+                                        [value]="false"
+                                    />
+                                    <label class="form-check-label mb-0" for="radioinline10">N</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </form>
+        </div>
+    </div>
+</div>

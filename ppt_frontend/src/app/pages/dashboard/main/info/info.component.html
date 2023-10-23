@@ -1,0 +1,49 @@
+<div class="card profile-box shadow">
+    <div class="card-body">
+      <div class="media row">
+        <div *ngIf="isLoggedIn"  class="media-body col-lg-8">
+            <div class="row col-lg-10">
+              <div class="col-lg-6 col-6">
+                <h4 class="f-w-600">{{ dtName }}</h4>
+                <p>
+                  Username: {{ dtUsername }} <br/>
+                  Email: {{ dtEmail }}
+                </p>
+                <p>
+                  Total Lahan : <span class="badge badge-success">-</span><br/><br/>
+                  Lokasi : <br/> ({{ latitude }}, {{ longitude }}) <br/> {{ address }}<br/>
+                </p>
+              </div>
+              <div class="col-lg-6 col-6">
+                <img class="img-fluid" width="150" src="assets/images/user/farmer_m.png" alt="" />
+              </div>
+            </div>
+            <div *ngIf="!isComplete && !isMenteri" class="mt-4"><a [routerLink]="'/dashboard/complete-profile'" class="btn btn-md bg-light-warning text-white"><i class="fa fa-warning text-warning"></i>&nbsp;<i>Lengkapi data anda untuk akses seluruh layanan</i></a></div>
+        </div>
+        <div *ngIf="!isLoggedIn"  class="media-body col-lg-8">
+            <div class="mt"><a [routerLink]="'/auth/login'" class="btn btn-md bg-primary fw-bold text-white">Yuk Login/Daftar dulu untuk menikmati seluruh Layanan</a></div>
+        </div>
+        <div class="col-lg-4 bg-light-warning rounded">
+          <div class="row">
+            <div class="col-lg-8 col-8 pt-3 pb-3">
+              <h5 class="f-w-500 text-white">{{ formattedDate }}</h5>
+              <p>
+                Suhu : {{ weatherData.temp_celcius }} &deg; C<br/>
+                Cuaca : {{ weatherData.weather }} <br/>
+                Ket. Cuaca : {{ weatherData.weather_desc }} <br/>
+                Kelembaban : {{ weatherData.humidity }} %<br/>
+                Tekanan : {{ weatherData.pressure }} hPa<br/>
+                Arah Angin : {{ weatherData.wind_direction }} &deg;<br/>
+                Kec. Angin : {{ weatherData.wind_speed }} m/s<br/>
+
+                <i><small>Sumber: API OpenWeatherMap, OpenCage </small></i>
+              </p>
+            </div>
+            <div class="col-lg-4 col-4 bg-light-info rounded">
+              <img class="img-fluid " width="100" src="https://openweathermap.org/img/wn/{{ weatherData.weather_icon }}@2x.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

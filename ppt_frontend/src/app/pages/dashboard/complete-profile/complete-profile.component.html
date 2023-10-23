@@ -1,0 +1,195 @@
+<div class="container-fluid search-page">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <ul class="nav nav-tabs search-list" id="top-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link" [ngClass]="{ 'active show': openTab == 'Biodata' }"><i class="icon-target"></i>Biodata</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [ngClass]="{ 'active show': openTab == 'Address' }"><i class="icon-image"></i>Alamat</a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content" id="top-tabContent">
+            <!-- BIO -->
+            <div class="search-links tab-pane fade show active" [ngClass]="{ 'show active': openTab == 'Biodata' }">
+              <form class="form theme-form" [formGroup]="bioForm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1">Nama Lengkap</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="text"
+                          placeholder="Sesuai KTP" 
+                          name="name_val"
+                          formControlName="name_val"
+                        />
+                        <div *ngIf="bioForm.get('name_val').invalid && bioForm.get('name_val').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('name_val')) }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1">NIK</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="text"
+                          placeholder="16 digit Sesuai KTP" 
+                          formControlName="nik_val"
+                        />
+                        <div *ngIf="bioForm.get('nik_val').invalid && bioForm.get('nik_val').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('nik_val')) }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1">Tempat Lahir</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="text"
+                          placeholder="Sesuai KTP" 
+                          formControlName="pob_val"
+                        />
+                        <div *ngIf="bioForm.get('pob_val').invalid && bioForm.get('pob_val').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('pob_val')) }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1">Tanggal Lahir</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="date"
+                          placeholder="Sesuai KTP" 
+                          formControlName="dob_val"
+                        />
+                        <div *ngIf="bioForm.get('dob_val').invalid && bioForm.get('dob_val').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('dob_val')) }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <app-select-role [listType]="selectMode" (roleSelected)="bioForm.get('role_id_val').setValue($event)"></app-select-role>
+                        <div *ngIf="bioForm.get('role_id_val').invalid && bioForm.get('role_id_val').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('role_id_val')) }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <app-checkbox-sub-sector [selectedCommodities]="subsectorId"></app-checkbox-sub-sector>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1">No Telepon / Whatsapp</label>
+                        <input 
+                          class="form-control gf_border" 
+                          type="text"
+                          placeholder="08xxx"
+                          formControlName="phone_val"
+                        />
+                        <div *ngIf="bioForm.get('phone_val').invalid && bioForm.get('phone_val').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('phone_val')) }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label for="exampleFormControlSelect9">Jenis Kelamin</label>
+                        <select 
+                          class="form-control digits gf_border"
+                          name="gender_val"
+                          formControlName="gender_val"
+                        >
+                          <option value="l">Laki - Laki</option>
+                          <option value="p">Perempuan</option>
+                        </select>
+                        <div *ngIf="bioForm.get('gender_val').invalid && bioForm.get('gender_val').touched" class="text-danger">
+                          {{ getErrorMsg(bioForm.get('gender_val')) }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-end">
+                  <div class="col-lg-9 offset-sm-3">
+                    <button
+                      class="btn btn-primary"
+                      type="button"
+                      (click)="moveToNextTab('Address')"
+                      [disabled]="bioForm.invalid"
+                    >
+                    Berikutnya
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- ADDRESS -->
+            <div class="tab-pane fade" id="image-links" [ngClass]="{ 'show active': openTab == 'Address' }">
+              <form class="form theme-form" [formGroup]="addressForm">
+                <div class="card-body">
+                    <app-region
+                      (provinsiSelected)="addressForm.get('prov_id_val').setValue($event)"
+                      (kabupatenSelected)="addressForm.get('reg_id_val').setValue($event)"
+                      (kecamatanSelected)="addressForm.get('sub_id_val').setValue($event)"
+                      (desaSelected)="addressForm.get('urb_id_val').setValue($event)"
+                      (change)="updateAddressForm()"
+                    ></app-region>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="mb-3 mb-0">
+                        <label for="exampleFormControlTextarea4">Alamat Lengkap</label>
+                        <textarea 
+                          class="form-control gf_border" 
+                          rows="3"
+                          formControlName="address_val"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="mb-3 mb-0">
+                        <label for="exampleFormControlTextarea4">Titik Lokasi Alamat</label><br/>
+                        <div *ngIf="openTab === 'Address'">
+                          <app-pin-point [containerId]="'map2'" [selectedLat]="selectedLat" [selectedLng]="selectedLng" (locationUpdate)="onLocationUpdate($event)"></app-pin-point>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+                <div class="card-footer text-end">
+                  <div class="col-lg-9 offset-sm-3">
+                    <input class="btn btn-light" type="button" (click)="tabbed('Biodata')" value="Sebelumnya" />
+                    <button
+                      class="btn btn-primary"
+                      type="button"
+                      (click)="moveToNextTab('finish')"
+                    >
+                    Simpan
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

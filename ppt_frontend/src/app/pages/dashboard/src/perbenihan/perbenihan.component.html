@@ -1,0 +1,366 @@
+<div class="card o-hidden">
+    <!-- <div class="card-header">
+        <h5>Persebaran Benih Nasional</h5>
+    </div>
+    <div class="bar-chart-widget">
+        <div class="bottom-content card-body">
+        <div class="row">
+            <div class="col-12">
+            <div id="chart-widget4">
+                <apx-chart [series]="monthlyHistory.series" [chart]="monthlyHistory.chart" [plotOptions]="monthlyHistory.plotOptions" [dataLabels]="monthlyHistory.dataLabels" [stroke]="monthlyHistory.stroke" [xaxis]="monthlyHistory.xaxis" [yaxis]="monthlyHistory.yaxis" [colors]="monthlyHistory.colors" [fill]="monthlyHistory.fill" [tooltip]="monthlyHistory.tooltip" [responsive]="monthlyHistory.responsive"></apx-chart>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div> -->
+
+    <div class="card-header">
+        <h5>Lokasi Produsen Benih</h5>
+    </div>
+
+    <div class="bar-chart-widget">
+        <div class="map-container">
+            <div class="map-frame">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Rekap Nasional</h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                        <i class="fe fe-chevron-up"></i>
+                    </a>
+                    <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                        <i class="fe fe-x"></i>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="card-body">
+                <div class="table-responsive edit-table">
+                    <table class="table card-table table-vcenter text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Jenis Benih</th>
+                                <th>Kelas Benih</th>
+                                <th>Varietas</th>
+                                <th>Realisasi Luas</th>
+                                <th>Realisasi Produksi</th>
+                                <th>Volume</th>
+                                <th>Dicatat</th>
+                                <th>Diperbarui</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of rekNas">
+                                <td>{{ item.JENIS_BENIH }}</td>
+                                <td>{{ item.KELAS_BENIH }}</td>
+                                <td>{{ item.VARIETAS }}</td>
+                                <td>{{ item.REALISASI_LUAS }}</td>
+                                <td>{{ item.REALISASI_PRODUKSI }}</td>
+                                <td>{{ item.VOLUME }}</td>
+                                <td>{{ item.DICATAT }}</td>
+                                <td>{{ item.DIPERBARUI }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Rekap BPSB</h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                        <i class="fe fe-chevron-up"></i>
+                    </a>
+                    <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                        <i class="fe fe-x"></i>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="card-body">
+                <div class="table-responsive edit-table">
+                    <table class="table card-table table-vcenter text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Jenis Benih</th>
+                                <th>Kelas Benih</th>
+                                <th>Varietas</th>
+                                <th>Realisasi Luas</th>
+                                <th>Realisasi Produksi</th>
+                                <th>Volume</th>
+                                <th>Dicatat</th>
+                                <th>Diperbarui</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of rekBPSB">
+                                <td>{{ item.JENIS_BENIH }}</td>
+                                <td>{{ item.KELAS_BENIH }}</td>
+                                <td>{{ item.VARIETAS }}</td>
+                                <td>{{ item.REALISASI_LUAS }}</td>
+                                <td>{{ item.REALISASI_PRODUKSI }}</td>
+                                <td>{{ item.VOLUME }}</td>
+                                <td>{{ item.DICATAT }}</td>
+                                <td>{{ item.DIPERBARUI }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Rekap LSSM</h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                        <i class="fe fe-chevron-up"></i>
+                    </a>
+                    <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                        <i class="fe fe-x"></i>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="card-body">
+                <div class="table-responsive edit-table">
+                    <table class="table card-table table-vcenter text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Jenis Benih</th>
+                                <th>Kelas Benih</th>
+                                <th>Varietas</th>
+                                <th>Realisasi Luas</th>
+                                <th>Realisasi Produksi</th>
+                                <th>Volume</th>
+                                <th>Dicatat</th>
+                                <th>Diperbarui</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of rekLSSM">
+                                <td>{{ item.JENIS_BENIH }}</td>
+                                <td>{{ item.KELAS_BENIH }}</td>
+                                <td>{{ item.VARIETAS }}</td>
+                                <td>{{ item.REALISASI_LUAS }}</td>
+                                <td>{{ item.REALISASI_PRODUKSI }}</td>
+                                <td>{{ item.VOLUME }}</td>
+                                <td>{{ item.DICATAT }}</td>
+                                <td>{{ item.DIPERBARUI }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Rekap Penyaluran</h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                        <i class="fe fe-chevron-up"></i>
+                    </a>
+                    <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                        <i class="fe fe-x"></i>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="card-body">
+                <div class="table-responsive edit-table">
+                    <table class="table card-table table-vcenter text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Komoditi</th>
+                                <th>Kelas Benih</th>
+                                <th>Varietas</th>
+                                <th>Stok Lalu</th>
+                                <th>Produksi Benih</th>
+                                <th>Pengadaan</th>
+                                <th>Jumlah Stok</th>
+                                <th>Penyaluran</th>
+                                <th>APBN</th>
+                                <th>APBD</th>
+                                <th>Free Market</th>
+                                <th>Jumlah Salur</th>
+                                <th>Total</th>
+                                <th>Sisa Stok</th>
+                                <th>Dicatat</th>
+                                <th>Diperbarui</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of rekPenyaluran">
+                                <td>{{ item.KOMODITI }}</td>
+                                <td>{{ item.KELAS_BENIH }}</td>
+                                <td>{{ item.VARIETAS }}</td>
+                                <td>{{ item.STOK_LALU }}</td>
+                                <td>{{ item.PRODUKSI_BENIH }}</td>
+                                <td>{{ item.PENGADAAN }}</td>
+                                <td>{{ item.JUMLAH_STOK }}</td>
+                                <td>{{ item.PENYALURAN }}</td>
+                                <td>{{ item.APBN }}</td>
+                                <td>{{ item.APBD }}</td>
+                                <td>{{ item.FREE_MARKET }}</td>
+                                <td>{{ item.JUMLAH_SALUR }}</td>
+                                <td>{{ item.TOTAL }}</td>
+                                <td>{{ item.SISA_STOK }}</td>
+                                <td>{{ item.DICATAT }}</td>
+                                <td>{{ item.DIPERBARUI }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Rekap Penyebaran</h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                        <i class="fe fe-chevron-up"></i>
+                    </a>
+                    <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                        <i class="fe fe-x"></i>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="card-body">
+                <div class="table-responsive edit-table">
+                    <table class="table card-table table-vcenter text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Provinsi</th>
+                                <th>Kabupaten/Kota</th>
+                                <th>Kecamatan</th>
+                                <th>Kelurahan</th>
+                                <th>Peta</th>
+                                <th>Realisasi Tanam Luas</th>
+                                <th>Benih</th>
+                                <th>Jenis Benih</th>
+                                <th>Varietas</th>
+                                <th>Total Luas</th>
+                                <th>Dicatat</th>
+                                <th>Diperbarui</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of rekPenyebaran">
+                                <td>{{ item.PROVINSI }}</td>
+                                <td>{{ item.KABUPATENKOTA }}</td>
+                                <td>{{ item.KECAMATAN }}</td>
+                                <td>{{ item.KELURAHAN }}</td>
+                                <td>{{ item.PETA }}</td>
+                                <td>{{ item.REALISASI_TANAM_LUAS }}</td>
+                                <td>{{ item.BENIH }}</td>
+                                <td>{{ item.JENIS_BENIH }}</td>
+                                <td>{{ item.VARIETAS }}</td>
+                                <td>{{ item.TOTAL_LUAS }}</td>
+                                <td>{{ item.DICATAT }}</td>
+                                <td>{{ item.DIPERBARUI }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Rekap Produsen</h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                        <i class="fe fe-chevron-up"></i>
+                    </a>
+                    <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                        <i class="fe fe-x"></i>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="card-body">
+                <div class="table-responsive edit-table">
+                    <table class="table card-table table-vcenter text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Provinsi</th>
+                                <th>Kabupaten/Kota</th>
+                                <th>Kecamatan</th>
+                                <th>Kelurahan</th>
+                                <th>Username</th>
+                                <th>ID SIMLUH</th>
+                                <th>Nomor Registrasi</th>
+                                <th>Tipe Produsen</th>
+                                <th>Nama</th>
+                                <th>Nama Pimpinan</th>
+                                <th>Alamat Pimpinan</th>
+                                <th>Alamat Produsen</th>
+                                <th>Telepon</th>
+                                <th>Email</th>
+                                <th>Benih</th>
+                                <th>Total Luas Lahan</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Dicatat</th>
+                                <th>Diperbarui</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of rekProdusen">
+                                <td>{{ item.PROVINSI }}</td>
+                                <td>{{ item.KABUPATENKOTA }}</td>
+                                <td>{{ item.KECAMATAN }}</td>
+                                <td>{{ item.KELURAHAN }}</td>
+                                <td>{{ item.USERNAME }}</td>
+                                <td>{{ item.IDSIMLUH }}</td>
+                                <td>{{ item.NOMOR_REGISTRASI }}</td>
+                                <td>{{ item.TIPE_PRODUSEN }}</td>
+                                <td>{{ item.NAMA }}</td>
+                                <td>{{ item.NAMA_PIMPINAN }}</td>
+                                <td>{{ item.ALAMAT_PIMPINAN }}</td>
+                                <td>{{ item.ALAMAT_PRODUSEN }}</td>
+                                <td>{{ item.TELEPON }}</td>
+                                <td>{{ item.EMAIL }}</td>
+                                <td>{{ item.BENIH }}</td>
+                                <td>{{ item.TOTAL_LUAS_LAHAN }}</td>
+                                <td>{{ item.LAT }}</td>
+                                <td>{{ item.LNG }}</td>
+                                <td>{{ item.DICATAT }}</td>
+                                <td>{{ item.DIPERBARUI }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>

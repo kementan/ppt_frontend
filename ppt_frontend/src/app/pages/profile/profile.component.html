@@ -1,0 +1,161 @@
+<div class="container-fluid">
+  <div class="edit-profile">
+    <div class="row">
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Data Dasar Petani</h4>
+            <div class="card-options">
+              <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+            </div>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row mb-2">
+                <div class="col-auto"><img class="img-70 rounded-circle" alt="" src="assets/images/user/farmer_m.png" /></div>
+                <div class="col">
+                  <h3 class="mb-1">{{ uName }}</h3>
+                  <p class="mb-4">{{ uEmail }}</p>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input class="form-control" value="{{ uName }}" readonly/>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email-Address</label>
+                <input class="form-control" value="{{ uEmail }}" readonly/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <form class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Edit Profile</h4>
+            <div class="card-options">
+              <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Nama Lengkap</label>
+                  <input class="form-control" type="text" value="{{ uName }}" readonly/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">NIK</label>
+                  <input class="form-control" type="text" value="{{ uNIK }}" readonly/>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label class="form-label">Provinsi</label>
+                  <input class="form-control" type="text" value="{{ uProv }}" readonly/>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label class="form-label">Kabupaten</label>
+                  <input class="form-control" type="text" value="{{ uReg }}" readonly/>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label class="form-label">Kecamatan</label>
+                  <input class="form-control" type="text" value="{{ uKec }}" readonly/>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label class="form-label">Desa</label>
+                  <input class="form-control" type="text" value="{{ uDes }}" readonly/>
+                </div>
+              </div>
+              <!-- <app-region></app-region> -->
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Alamat Lengkap</label>
+                  <textarea class="form-control" rows="3" readonly>{{ uAddress }}</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Sertifikat Pelatihan</h4>
+            <div class="card-options">
+              <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+            </div>
+          </div>
+      
+          <div class="card-body">
+            <ng-container *ngIf="isPDF; else notFound">
+              <pdf-viewer
+                [src]="pdfData"
+                [height]="'auto'"
+                [useBrowserLocale]="true"
+                [render-text]="true"
+                [original-size]="false"
+                style="width: 100%; height: 500px"
+              >
+              </pdf-viewer>
+            </ng-container>
+            <ng-template #notFound>
+             
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Pelatihan</h4>
+            <div class="card-options">
+              <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+            </div>
+          </div>
+          <div class="table-responsive edit-table">
+            <table *ngIf="isPDF" class="table card-table table-vcenter text-nowrap">
+              <thead>
+                <tr>
+                  <th>Judul</th>
+                  <th>Status</th>
+                  <th>ID Pelatihan</th>
+                  <th>Kode Pelatihan</th>
+                  <th>Tanggal Mulai</th>
+                  <th>Jam Mulai</th>
+                  <th>Tanggal Akhir</th>
+                  <th>Jam Akhir</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let training of trainings">
+                  <td>{{ training.judul_pel }}</td>
+                  <td>{{ training.sts_ikut }}</td>
+                  <td>{{ training.id_pel }}</td>
+                  <td>{{ training.kode_pel }}</td>
+                  <td>{{ training.tanggal_mulai }}</td>
+                  <td>{{ training.jam_mulai }}</td>
+                  <td>{{ training.tanggal_akhir }}</td>
+                  <td>{{ training.jam_akhir }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

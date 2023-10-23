@@ -1,0 +1,80 @@
+<div class="container-fluid search-page">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="text-center">
+              <ul class="nav nav-tabs search-list" id="top-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link" [ngClass]="{ 'active show': openTab == 'Land' }"><i class="icon-image"></i>Lahan</a>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-content" id="top-tabContent">
+                <!-- LAND -->
+                <div class="tab-pane fade" id="image-links" [ngClass]="{ 'show active': openTab == 'Land' }">
+                    <form class="form theme-form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3 mb-0">
+                                    <label for="exampleFormControlTextarea4">Titik Lokasi Lahan</label><br/>
+                                    <div *ngIf="openTab === 'Land'">
+                                        <app-pin-point [containerId]="'map2'" [selectedLat]="selectedLat" [selectedLng]="selectedLng"></app-pin-point>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">Nama Lahan</label>
+                                    <input 
+                                    class="form-control gf_border" 
+                                    type="text"
+                                    placeholder="Nama Lahan" 
+                                    formControlName="name_val"
+                                    />
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <app-select-land-status></app-select-land-status>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1">Luas</label>
+                                    <input 
+                                    class="form-control gf_border" 
+                                    type="number"
+                                    placeholder="1000 (dalam satuan meter persegi)" 
+                                    formControlName="area_val"
+                                    />
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3 mb-0">
+                                <label for="exampleFormControlTextarea4">Alamat Lahan</label>
+                                <textarea 
+                                    class="form-control gf_border" 
+                                    rows="3"
+                                    formControlName="address_val"
+                                ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

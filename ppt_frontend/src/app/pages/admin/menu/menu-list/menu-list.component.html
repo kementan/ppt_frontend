@@ -1,0 +1,98 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body custom-datatable noscroll">
+                    <div class="custom-datatable">
+                        <h5 class="ribbon ribbon-bookmark ribbon-primary fw-bold">{{ sec1_title }}</h5>
+                        <br/><hr/>
+                        <app-menu-cu *ngIf="visible"></app-menu-cu>
+                        <div class="d-flex justify-content-between mb-3 row">
+                            <div class="col-lg-7">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                    <input class="form-control bg-light-primary" id="search" type="search" [(ngModel)]="filter.search" (input)="onSearchInput($event)"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 d-flex justify-content-end">
+                                <button class="btn btn-success fw-bold" (click)="exportData()"><i class="fa fa-download"></i> Excel</button>
+                                <button *ngIf="!visible" class="btn btn-primary fw-bold" style="margin-left:5px;" (click)="doCreate()"><i class="fa fa-edit"></i> Data Baru</button>
+                                <button *ngIf="isDelete" class="btn btn-danger fw-bold" style="margin-left:5px;" (click)="doDelete()"><i class="fa fa-trash"></i> Hapus</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="bg-primary">
+                                    <tr>
+                                    <th scope="col" (click)="sort(0, 'id')">No <i [innerHTML]="sortE" [class.text-warning]="isSorted(0)"></i></th>
+                                    <th scope="col" (click)="sort(1, 'name')">Name <i [innerHTML]="sortE" [class.text-warning]="isSorted(1)"></i></th>
+                                    <th scope="col" (click)="sort(2, 'slug')">Slug <i [innerHTML]="sortE" [class.text-warning]="isSorted(2)"></i></th>
+                                    <th scope="col" (click)="sort(3, 'sort')">Sort <i [innerHTML]="sortE" [class.text-warning]="isSorted(3)"></i></th>
+                                    <th scope="col" (click)="sort(4, 'is_active')">Status <i [innerHTML]="sortE" [class.text-warning]="isSorted(4)"></i></th>
+                                    <th scope="col" *ngIf="!visible">Sub Menu</th>
+                                    <th scope="col" *ngIf="!visible">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="(loadingService.isLoading$ | async)">
+                                        <td colspan="6" class="text-center">
+                                            <app-loading-icon></app-loading-icon>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="data.length <= 0">
+                                        <td class="text-center" colspan="4">
+                                            Data tidak ditemukan
+                                        </td>
+                                    </tr>
+                                    <ng-container *ngIf="!(loadingService.isLoading$ | async)">
+                                        <tr *ngFor="let item of data; let i = index">
+                                            <td>
+                                                {{ (currentPage - 1) * pageSize + i + 1 }}
+                                            </td>
+                                            <td>
+                                                {{ item.name }}
+                                            </td>
+                                            <td>
+                                                {{ item.slug }}
+                                            </td>
+                                            <td>
+                                                {{ item.sort }}
+                                            </td>
+                                            <td>
+                                                <ng-container *ngIf="item.is_active; else notActive">
+                                                    <i class="badge badge-success">Active</i>
+                                                </ng-container>
+                                                <ng-template #notActive>
+                                                    <i class="badge badge-danger">Inactive</i>
+                                                </ng-template>
+                                            </td>
+                                            <td *ngIf="!visible">
+                                                <ng-container *ngIf="item.sub_menu > 0; else noSubmenu">
+                                                    <i class="badge badge-success">{{ item.sub_menu }}</i>
+                                                </ng-container>
+                                                <ng-template #noSubmenu>
+                                                    <i class="badge badge-warning">0</i>
+                                                </ng-template>
+                                            </td>
+                                            <td *ngIf="!visible">
+                                                <div class="action">
+                                                    <li class="edit" (click)="doEdit(item.id)">
+                                                        <i class="icon-pencil-alt"></i>
+                                                    </li>
+                                                    <li class="delete">
+                                                        <input type="checkbox" [checked]="isSelected(item.name)" (change)="onCheckboxChange(item.id, item.name)"/>
+                                                    </li>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends -->

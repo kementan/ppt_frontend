@@ -1,0 +1,132 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12">
+      <div class="login-card">
+        <div>
+          <div class="login-main">
+            <div>
+              <a class="logo" routerLink="/">
+                <img class="img-fluid for-light gf_logo" src="assets/logo.png" alt="Kementerian Pertanian" />
+              </a>
+            </div>
+            <form
+              *ngIf="!isLoggedIn"
+              class="theme-form"
+              name="form"
+              (ngSubmit)="f.form.valid && onSubmit()"
+              #f="ngForm"
+              novalidate
+            >
+              <h4>Daftar</h4>
+              <p>Isi data berikut untuk melakukan registrasi</p>
+              <div class="form-group">
+                <label class="col-form-label">Nama Lengkap</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required=""
+                  name="name"
+                  placeholder="Nama Lengkap"
+                  autocomplete="off"
+                  [(ngModel)]="form.name"
+                  #name="ngModel"
+                />
+                <div *ngIf="name.errors && f.submitted" class="text text-danger mt-1">
+                  <div *ngIf="name.errors['required']">Nama Lengkap tidak boleh kosong</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required=""
+                  name="username"
+                  placeholder="Username"
+                  autocomplete="off"
+                  [(ngModel)]="form.username"
+                  #username="ngModel"
+                />
+                <div *ngIf="username.errors && f.submitted" class="text text-danger mt-1">
+                  <div *ngIf="username.errors['required']">Username tidak boleh kosong</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  required=""
+                  name="email"
+                  placeholder="email@email.com"
+                  autocomplete="off"
+                  [(ngModel)]="form.email"
+                  #email="ngModel"
+                />
+                <div *ngIf="email.errors && f.submitted" class="text text-danger mt-1">
+                  <div *ngIf="email.errors['required']">Email tidak boleh kosong</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required=""
+                  name="password"
+                  autocomplete="off"
+                  [(ngModel)]="form.password"
+                  #password="ngModel"
+                  minlength="8"
+                />
+                <div *ngIf="password.errors && f.submitted" class="text text-danger mt-1">
+                  <div *ngIf="password.errors['required']">Password tidak boleh kosong</div>
+                  <div *ngIf="password.errors['minlength']">
+                    Password must be at least 8 characters
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Konfirmasi Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required=""
+                  name="confirm_password"
+                  autocomplete="off"
+                  [(ngModel)]="form.confirm_password"
+                  #confirm_password="ngModel"
+                  minlength="8"
+                  [equalTo]="form.password"
+                />
+                <div *ngIf="confirm_password.errors && f.submitted" class="text text-danger mt-1">
+                  <div *ngIf="confirm_password.errors['required']">Konfirmasi Password tidak boleh kosong</div>
+                  <div *ngIf="confirm_password.errors['minlength']">
+                    Konfirmasi Password must be at least 8 characters
+                  </div>
+                </div>
+                <div *ngIf="!isEqual" class="text text-danger mt-1">
+                  <div>Konfirmasi Password harus sama dengan Password</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div *ngIf="f.submitted && isRegisterFailed" class="text text-danger mt-1">
+                  Gagal daftar: {{ errorMessage }}
+                </div>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" (click)="openModal()" [(ngModel)]="acceptedTerms"> Saya menyetujui syarat dan ketentuan
+                </label>
+              </div>
+              <div class="form-group mb-0">
+                  <button class="btn gf_btn d-block w-100"  [disabled]="!acceptedTerms" type="submit">Buat Akun</button>
+              </div>
+              <p class="mt-4 mb-0">Sudah punya akun?<a class="ms-2" [routerLink]="'/auth/login'">Login</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
