@@ -1,0 +1,63 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mb-0">Rekap Penyaluran</h4>
+            <div class="card-options">
+                <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                    <i class="fe fe-chevron-up"></i>
+                </a>
+                <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                    <i class="fe fe-x"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive edit-table">
+                <table class="table card-table table-vcenter text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Komoditi</th>
+                            <th>Kelas Benih</th>
+                            <th>Varietas</th>
+                            <th>Stok Lalu</th>
+                            <th>Produksi Benih</th>
+                            <th>Pengadaan</th>
+                            <th>Jumlah Stok</th>
+                            <th>Penyaluran</th>
+                            <th>APBN</th>
+                            <th>APBD</th>
+                            <th>Free Market</th>
+                            <th>Jumlah Salur</th>
+                            <th>Total</th>
+                            <th>Sisa Stok</th>
+                            <th>Dicatat</th>
+                            <th>Diperbarui</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td>{{ item.KOMODITI }}</td>
+                            <td>{{ item.KELAS_BENIH }}</td>
+                            <td>{{ item.VARIETAS }}</td>
+                            <td>{{ item.STOK_LALU }}</td>
+                            <td>{{ item.PRODUKSI_BENIH }}</td>
+                            <td>{{ item.PENGADAAN }}</td>
+                            <td>{{ item.JUMLAH_STOK }}</td>
+                            <td>{{ item.PENYALURAN }}</td>
+                            <td>{{ item.APBN }}</td>
+                            <td>{{ item.APBD }}</td>
+                            <td>{{ item.FREE_MARKET }}</td>
+                            <td>{{ item.JUMLAH_SALUR }}</td>
+                            <td>{{ item.TOTAL }}</td>
+                            <td>{{ item.SISA_STOK }}</td>
+                            <td>{{ item.DICATAT }}</td>
+                            <td>{{ item.DIPERBARUI }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <pagination-controls (pageChange)="p = $event" [maxSize]="5" [directionLinks]="true" [autoHide]="false"></pagination-controls>
+    </div>
+</div>

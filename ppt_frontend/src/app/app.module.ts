@@ -3,6 +3,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LayoutModule } from "./layout/layout.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -34,6 +36,12 @@ import { EmailVerifyComponent } from './pages/auth/email-verify/email-verify.com
   imports: [
     LayoutModule,
     BrowserModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      timeOut: 3000, 
+      progressBar: true,
+    }),
     AppRoutingModule,
     FormsModule,
     RecaptchaV3Module,

@@ -132,14 +132,14 @@ export class NavService implements OnDestroy {
             { path: "/admin/api-fetcher", title: "Fetch API Data", type: "link" },
           ],
         },
-        {
-          title: "Module Generator",
-          type: "sub",
-          active: false,
-          children: [
-            { path: "/admin/module-generator", title: "Data Modul", type: "link" },
-          ],
-        },
+        // {
+        //   title: "Module Generator",
+        //   type: "sub",
+        //   active: false,
+        //   children: [
+        //     { path: "/admin/module-generator", title: "Data Modul", type: "link" },
+        //   ],
+        // },
         {
           title: "Pengaturan",
           type: "sub",

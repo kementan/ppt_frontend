@@ -1,0 +1,48 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mb-0">Rekap LSSM</h4>
+            <div class="card-options">
+                <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse">
+                    <i class="fe fe-chevron-up"></i>
+                </a>
+                <a class="card-options-remove" href="javascript:void(0)" data-bs-toggle="card-remove">
+                    <i class="fe fe-x"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive edit-table">
+                <table class="table card-table table-vcenter text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Jenis Benih</th>
+                            <th>Kelas Benih</th>
+                            <th>Varietas</th>
+                            <th>Realisasi Luas</th>
+                            <th>Realisasi Produksi</th>
+                            <th>Volume</th>
+                            <th>Dicatat</th>
+                            <th>Diperbarui</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: p }">
+                            
+                            <td>{{ item.JENIS_BENIH }}</td>
+                            <td>{{ item.KELAS_BENIH }}</td>
+                            <td>{{ item.VARIETAS }}</td>
+                            <td>{{ item.REALISASI_LUAS }}</td>
+                            <td>{{ item.REALISASI_PRODUKSI }}</td>
+                            <td>{{ item.VOLUME }}</td>
+                            <td>{{ item.DICATAT }}</td>
+                            <td>{{ item.DIPERBARUI }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <pagination-controls (pageChange)="p = $event" [maxSize]="5" [directionLinks]="true" [autoHide]="false"></pagination-controls>
+    </div>
+</div>
